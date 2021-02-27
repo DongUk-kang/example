@@ -2,13 +2,13 @@ import axios from "axios";
 
 const TMDB_KEY = "c9349dd29b0c396b729d9fc6016daf67";
 
-const makeRequest = (path,params) =>
-    axios.get(`https://api.themoviedb.org/3${path}`), {
-    params: {
-        ...params,
-        api_key: TMDM_KEY
-    }
-})
+const makeRequest = (path, params) =>
+    axios.get(`https://api.themoviedb.org/3${path}`, {
+        params: {
+            ...params,
+            api_key: TMDB_KEY,
+        },
+    });
 
 const getAnything = async (path, params = {}) => {
     try {
@@ -33,7 +33,7 @@ export const movieAPI = {
 
 export const tvAPI = {
     lastest: () => getAnything("/tv/lastest"),
-    ontheair: () => getAnything("/tv/ontheair"),
+    ontheair: () => getAnything("/tv/on_the_air"),
     popular: () => getAnything("/tv/popular"),
     toprated: () => getAnything("/tv/toprated"),
     detail: (id) => getAnything(`/tv/${id}`),
