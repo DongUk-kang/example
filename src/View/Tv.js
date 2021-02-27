@@ -23,7 +23,6 @@ const Tv = () => {
         const [toprated, topratedError] = await tvAPI.toprated()
         console.log(ontheair)
         setTvs({
-
             ontheair,
             popular,
             toprated,
@@ -33,15 +32,35 @@ const Tv = () => {
         })
     }
 
-
-
-
     useEffect(() => {
         getdata()
     }, [])
     return (
         <div>
-            <h1>{tvs.ontheair.length}</h1>
+            <div>
+                <h1>On the air</h1>
+                {tvs.ontheair.map(item => (
+                    <h1>{item.original_name}</h1>
+
+                ))}
+            </div>
+
+            <div>
+                <h1>Popular</h1>
+                {tvs.popular.map(item => (
+                    <h1>{item.original_name}</h1>
+
+                ))}
+
+            </div>
+            <div>
+                <h1>Top rated</h1>
+                {tvs.toprated.map(item => (
+                    <h1>{item.original_name}</h1>
+
+                ))}
+            </div>
+
         </div>
     );
 };

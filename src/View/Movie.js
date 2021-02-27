@@ -45,7 +45,18 @@ const Movie = () => {
     }, [])
     return (
         <div>
-            <h1>{movies.nowPlaying.length}</h1>
+            <div>
+                <h1>Now Playing</h1>
+                    {movies.nowPlaying.map(item => (
+                        <h2>{item.title}</h2>
+                    ))}
+            </div>
+            <div>
+                <h1>Top Rated</h1>
+                {movies.toprated.map(item => (
+                    <h2>{item.title}</h2>
+                ))}
+            </div>
         </div>
     );
 };
