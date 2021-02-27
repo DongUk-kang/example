@@ -1,10 +1,48 @@
 import React from 'react';
+import Poster from "../../Compnents/Poster";
 
-const MoviePresneter = () => {
+
+
+const MoviePresneter = ({upcoming, nowPlaying, toprated, popular}) => {
     return (
         <div>
-            <h1>Movie</h1>
+            {upcoming.map(item => (
+               <Poster
+                   title={item.title}
+                   releas={item.release_date}
+                   vote={item.vote_average}
+               />
+            ))}
+            {nowPlaying.map(item => (
+                <Poster
+                    title={item.title}
+                    releas={item.release_date}
+                    vote={item.vote_average}
+                />
+
+
+            ))}
+            {toprated.map(item => (
+                <Poster
+                    title={item.title}
+                    releas={item.release_date}
+                    vote={item.vote_average}
+                />
+
+            ))}
+            {popular.map(item => (
+                <Poster
+                    title={item.title}
+                    releas={item.release_date}
+                    vote={item.vote_average}
+                />
+            ))}
         </div>
+
+
+
+
+
     );
 };
 

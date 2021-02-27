@@ -45,7 +45,12 @@ const MovieContainer = () => {
         getdata()
     }, [])
     return (
-        <MoviePresenter />
+        <MoviePresenter
+            upcoming={movies.upcoming}
+            nowPlaying={movies.nowPlaying}
+            toprated={movies.toprated}
+            popular={movies.popular}
+        />
     );
 };
 

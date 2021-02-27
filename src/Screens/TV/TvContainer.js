@@ -38,7 +38,11 @@ const TvContainer = () => {
         getdata()
     }, [])
     return (
-        <TvPresenter />
+        <TvPresenter
+            ontheair={tvs.ontheair}
+            popular={tvs.popular}
+            toprated={tvs.toprated}
+        />
     );
 };
 

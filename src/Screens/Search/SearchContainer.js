@@ -1,5 +1,5 @@
 import React from 'react';
-import SearchPresneter from "./SearchPresneter";
+import SearchPresneter from "./SearchPresenter";
 
 const SearchContainer = () => {
     return (

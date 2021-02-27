@@ -1,9 +1,33 @@
 import React from 'react';
+import Poster from "../../Compnents/Poster";
 
-const TvPresenter = () => {
+const TvPresenter = ({ontheair, toprated, popular}) => {
     return (
         <div>
-            <h1>Tv</h1>
+            {ontheair.map(item => (
+                <Poster
+                    title={item.original_name}
+                    releas={item.first_air_date}
+                    vote={item.vote_average}
+                />
+            ))}
+            {toprated.map(item => (
+                <Poster
+                    title={item.original_name}
+                    releas={item.first_air_date}
+                    vote={item.vote_average}
+                />
+            ))}
+            {popular.map(item => (
+                <Poster
+                    title={item.original_name}
+                    releas={item.first_air_date}
+                    vote={item.vote_average}
+                />
+            ))}
+
+
+
         </div>
     );
 };
