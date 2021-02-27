@@ -1,7 +1,8 @@
 import React, {useState, useEffect} from 'react';
-import { movieAPI } from "../api";
+import { movieAPI } from "../../api";
+import MoviePresenter from "./MoviePresenter";
 
-const Movie = () => {
+const MovieContainer = () => {
     const [movies, setMovies] = useState({
         nowPlaying: [],
         toprated: [],
@@ -44,21 +45,8 @@ const Movie = () => {
         getdata()
     }, [])
     return (
-        <div>
-            <div>
-                <h1>Now Playing</h1>
-                    {movies.nowPlaying.map(item => (
-                        <h2>{item.title}</h2>
-                    ))}
-            </div>
-            <div>
-                <h1>Top Rated</h1>
-                {movies.toprated.map(item => (
-                    <h2>{item.title}</h2>
-                ))}
-            </div>
-        </div>
+        <MoviePresenter />
     );
 };
 
-export default Movie;
+export default MovieContainer;

@@ -1,11 +1,11 @@
 import React from 'react';
 
-const Search = () => {
+const TvPresenter = () => {
     return (
         <div>
-            <h1>Hello, Search</h1>
+            <h1>Tv</h1>
         </div>
     );
 };
 
-export default Search;
+export default TvPresenter;

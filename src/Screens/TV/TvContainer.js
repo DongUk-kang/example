@@ -1,7 +1,9 @@
 import React, {useState, useEffect} from 'react';
-import { tvAPI } from "../api";
+import { tvAPI } from "../../api";
+import TvPresenter from "./TvPresenter";
 
-const Tv = () => {
+
+const TvContainer = () => {
     const [tvs, setTvs] = useState({
         ontheair: [],
         popular: [],
@@ -36,33 +38,8 @@ const Tv = () => {
         getdata()
     }, [])
     return (
-        <div>
-            <div>
-                <h1>On the air</h1>
-                {tvs.ontheair.map(item => (
-                    <h1>{item.original_name}</h1>
-
-                ))}
-            </div>
-
-            <div>
-                <h1>Popular</h1>
-                {tvs.popular.map(item => (
-                    <h1>{item.original_name}</h1>
-
-                ))}
-
-            </div>
-            <div>
-                <h1>Top rated</h1>
-                {tvs.toprated.map(item => (
-                    <h1>{item.original_name}</h1>
-
-                ))}
-            </div>
-
-        </div>
+        <TvPresenter />
     );
 };
 
-export default Tv;
+export default TvContainer;
