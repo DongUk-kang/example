@@ -32,9 +32,9 @@ export const movieAPI = {
 }
 
 export const tvAPI = {
-    lastest: () => getAnything("/tv/lastest"),
+    lastest: () => getAnything("/tv/latest"),
     ontheair: () => getAnything("/tv/on_the_air"),
     popular: () => getAnything("/tv/popular"),
-    toprated: () => getAnything("/tv/toprated"),
+    toprated: () => getAnything("/tv/top_rated"),
     detail: (id) => getAnything(`/tv/${id}`),
 }
