@@ -14,11 +14,6 @@ const TvContainer = () => {
         topratedError: null
     })
 
-    // lastest: () => getAnything("/tv/lastest"),
-    //     ontheair: () => getAnything("/tv/on_the_air"),
-    //     popular: () => getAnything("/tv/popular"),
-    //     toprated: () => getAnything("/tv/toprated"),
-
     const getdata = async () => {
         const [ontheair, ontheairError] = await tvAPI.ontheair()
         const [popular, popularError] = await tvAPI.popular()

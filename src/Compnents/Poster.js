@@ -9,6 +9,11 @@ const ImageContainer = styled.div`
 const Image = styled.div`
 `
 
+const Title = styled.span`
+    font-size: 12px;
+    font-weight: 800;
+`
+
 const Poster = ({title, releas, vote}) => {
     return (
 
@@ -19,7 +24,7 @@ const Poster = ({title, releas, vote}) => {
                 </Image>
                 <span>{vote}</span>
             </ImageContainer>
-            <span>{title}</span>
+            <Title>{title}</Title>
             <span>{releas}</span>
         </Container>
 

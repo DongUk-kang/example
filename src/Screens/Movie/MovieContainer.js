@@ -5,27 +5,27 @@ import MoviePresenter from "./MoviePresenter";
 const MovieContainer = () => {
     const [movies, setMovies] = useState({
         nowPlaying: [],
-        toprated: [],
+        topRated: [],
         popular: [],
         upcoming: [],
         nowPlayingError: null,
-        topratedError: null,
+        topRatedError: null,
         popularError: null,
         upcomingError: null
     })
 
     const getdata = async () => {
         const [nowPlaying, nowPlayingError] = await movieAPI.nowPlaying()
-        const [toprated, topratedError] = await movieAPI.toprated()
+        const [topRated, topRatedError] = await movieAPI.toprated()
         const [popular, popularError] = await movieAPI.popular()
         const [upcoming, upcomingError] = await movieAPI.upcoming()
         setMovies({
             nowPlaying,
-            toprated,
+            topRated,
             popular,
             upcoming,
             nowPlayingError,
-            topratedError,
+            topRatedError,
             popularError,
             upcomingError
         })
@@ -45,12 +45,7 @@ const MovieContainer = () => {
         getdata()
     }, [])
     return (
-        <MoviePresenter
-            upcoming={movies.upcoming}
-            nowPlaying={movies.nowPlaying}
-            toprated={movies.toprated}
-            popular={movies.popular}
-        />
+        <MoviePresenter {...movies}/>
     );
 };
 

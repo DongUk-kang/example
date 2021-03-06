@@ -1,49 +1,48 @@
 import React from 'react';
-import Poster from "../../Compnents/Poster";
+import PropTypes from 'prop-types';
+import Section from "../../Compnents/Section";
 
-
-
-const MoviePresneter = ({upcoming, nowPlaying, toprated, popular}) => {
+const MoviePresenter = ({nowPlaying, topRated, popular, upcoming}) => {
     return (
         <div>
-            {upcoming.map(item => (
-               <Poster
-                   title={item.title}
-                   releas={item.release_date}
-                   vote={item.vote_average}
-               />
-            ))}
-            {nowPlaying.map(item => (
-                <Poster
-                    title={item.title}
-                    releas={item.release_date}
-                    vote={item.vote_average}
-                />
+            {nowPlaying && nowPlaying.length > 0 && (
+                <Section title={"Now Playing"}>
+                    {nowPlaying.map(item => (
+                        <span>{item.title}</span>
+                    ))}
+                </Section>
+            )}
+            {topRated && topRated.length > 0 && (
+                <Section title={"Top Rate"}>
+                    {topRated.map(item => (
+                        <span>{item.title}</span>
+                    ))}
+                </Section>
+            )}
+            {popular && popular.length > 0 && (
+                <Section title={"Popular"}>
+                    {popular.map(item => (
+                        <span>{item.title}</span>
+                    ))}
+                </Section>
+            )}
+            {upcoming && upcoming.length > 0 && (
+                <Section title={"Upcoming"}>
+                    {upcoming.map(item => (
+                        <span>{item.title}</span>
+                    ))}
+                </Section>
+            )}
 
-
-            ))}
-            {toprated.map(item => (
-                <Poster
-                    title={item.title}
-                    releas={item.release_date}
-                    vote={item.vote_average}
-                />
-
-            ))}
-            {popular.map(item => (
-                <Poster
-                    title={item.title}
-                    releas={item.release_date}
-                    vote={item.vote_average}
-                />
-            ))}
         </div>
-
-
-
-
-
     );
 };
 
-export default MoviePresneter;
+MoviePresenter.propTypes = {
+    nowPlaying: PropTypes.array,
+    topRated: PropTypes.array,
+    popular: PropTypes.array,
+    upcoming: PropTypes.array
+};
+
+export default MoviePresenter;
