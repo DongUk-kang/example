@@ -7,25 +7,25 @@ const TvContainer = () => {
     const [tvs, setTvs] = useState({
         ontheair: [],
         popular: [],
-        toprated: [],
+        topRated: [],
         lastestError: null,
         ontheairError: null,
         popularError: null,
-        topratedError: null
+        topRatedError: null
     })
 
     const getdata = async () => {
         const [ontheair, ontheairError] = await tvAPI.ontheair()
         const [popular, popularError] = await tvAPI.popular()
-        const [toprated, topratedError] = await tvAPI.toprated()
+        const [topRated, topRatedError] = await tvAPI.toprated()
         console.log(ontheair)
         setTvs({
             ontheair,
             popular,
-            toprated,
+            topRated,
             ontheairError,
             popularError,
-            topratedError
+            topRatedError
         })
     }
 
@@ -34,9 +34,7 @@ const TvContainer = () => {
     }, [])
     return (
         <TvPresenter
-            ontheair={tvs.ontheair}
-            popular={tvs.popular}
-            toprated={tvs.toprated}
+            {...tvs}
         />
     );
 };

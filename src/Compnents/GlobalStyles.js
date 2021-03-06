@@ -15,7 +15,7 @@ const GlobalStyles = createGlobalStyle`
     background-color: rgba(20, 20, 20, 1);
     color: white;
     padding-top: 30px;
-    padding-left: 15px;
+    padding-left: 25px;
     font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', ROboto, Oxygen, ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   }
 `;
