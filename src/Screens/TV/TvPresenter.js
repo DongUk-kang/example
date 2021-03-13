@@ -64,6 +64,7 @@ const TvPresenter = ({ontheair, popular, topRated, loading}) => {
 };
 
 TvPresenter.propTypes = {
+    loading: PropTypes.bool.isRequired,
     ontheair: PropTypes.array,
     popular: PropTypes.array,
     topRated: PropTypes.array

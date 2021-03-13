@@ -5,7 +5,8 @@ import Tv from "../Screens/TV"
 import Search from "../Screens/Search"
 import Header from "./Header";
 
-export default () => (
+// export default () => (
+const Routing = () => (
     <Router>
 
         <>
@@ -20,3 +21,5 @@ export default () => (
         </>
     </Router>
 )
+
+export default Routing;
