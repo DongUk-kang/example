@@ -8,10 +8,10 @@ const TvContainer = () => {
         ontheair: [],
         popular: [],
         topRated: [],
-        lastestError: null,
         ontheairError: null,
         popularError: null,
-        topRatedError: null
+        topRatedError: null,
+        loading: true
     })
 
     const getdata = async () => {
@@ -25,7 +25,8 @@ const TvContainer = () => {
             topRated,
             ontheairError,
             popularError,
-            topRatedError
+            topRatedError,
+            loading: false
         })
     }
 

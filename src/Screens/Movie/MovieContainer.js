@@ -11,7 +11,8 @@ const MovieContainer = () => {
         nowPlayingError: null,
         topRatedError: null,
         popularError: null,
-        upcomingError: null
+        upcomingError: null,
+        loading : true
     })
 
     const getdata = async () => {
@@ -27,7 +28,8 @@ const MovieContainer = () => {
             nowPlayingError,
             topRatedError,
             popularError,
-            upcomingError
+            upcomingError,
+            loading: false
         })
 
        //  setMovies(data)
