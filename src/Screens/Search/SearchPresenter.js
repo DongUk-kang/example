@@ -3,17 +3,21 @@ import styled from "styled-components";
 import PropTypes from 'prop-types';
 
 const Container = styled.div`
-  padding-top: 80px;
+  padding-top: 40px;
 `
 
 const Form = styled.form`
-  
+  margin-bottom: 50px;
+  width: 100%;
 `
 
 const Input = styled.input`
+    all: unset;
+    font-size: 32px;
+    width: 100%;
 `
 
-const SearchPresenter = ({movies, shows, onSubmit, keyword, onChange, loading, error}) => {
+const SearchPresenter = ({movies, shows, onSubmit, keyword, onChange, loading, moviesError, showsError}) => {
     return (
         <Container>
             <Form onSubmit={onSubmit}>
@@ -35,7 +39,8 @@ SearchPresenter.propTypes = {
     onChange: PropTypes.func.isRequired,
     onSubmit: PropTypes.func.isRequired,
     loading: PropTypes.bool.isRequired,
-    error: PropTypes.string
+    moviesError: PropTypes.string,
+    showsError: PropTypes.string
 }
 
 export default SearchPresenter;

@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import SearchPresneter from "./SearchPresenter";
+import SearchPresenter from "./SearchPresenter";
 
 
 
@@ -14,8 +14,26 @@ const SearchContainer = () => {
         loading: false
     })
 
+    const onChange = (event) => setKeyword(event.target.value)
+
+
+    const onSubmit = async () => {
+        console.log(keyword)
+
+    }
+
     return (
-        <SearchPresneter />
+        <SearchPresenter
+            {...results}
+            // movies={results.movies}
+            // shows={results.shows}
+            keyword={keyword}
+            onChange={onChange}
+            onSubmit={onSubmit}
+            // loading={results.loading}
+            // moviesError={results.moviesError}
+            // showsError={results.showsError}
+        />
     );
 };
 
