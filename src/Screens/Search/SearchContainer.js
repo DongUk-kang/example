@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import SearchPresenter from "./SearchPresenter";
+import {movieAPI, tvAPI} from "../../api";
 
 
 
@@ -18,8 +19,22 @@ const SearchContainer = () => {
 
 
     const onSubmit = async () => {
-        console.log(keyword)
+       setResults({ loading : true })
 
+       if (keyword === "") {
+           return
+       }
+
+       const [movies, moviesError] = await movieAPI.search(keyword)
+       const [shows, showsError] = await tvAPI.search(keyword)
+
+        setResults({
+            movies,
+            shows,
+            moviesError,
+            showsError,
+            loading: false
+        })
     }
 
     return (

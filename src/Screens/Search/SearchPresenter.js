@@ -1,13 +1,15 @@
 import React from 'react';
 import styled from "styled-components";
 import PropTypes from 'prop-types';
+import Poster from "../../Compnents/Poster";
+import Section from "../../Compnents/Section";
 
 const Container = styled.div`
-  padding-top: 40px;
+  padding-top: 0px 20px;
 `
 
 const Form = styled.form`
-  margin-bottom: 50px;
+  margin-bottom: 10px;
   width: 100%;
 `
 
@@ -16,6 +18,8 @@ const Input = styled.input`
     font-size: 32px;
     width: 100%;
 `
+
+
 
 const SearchPresenter = ({movies, shows, onSubmit, keyword, onChange, loading, moviesError, showsError}) => {
     return (
@@ -28,6 +32,36 @@ const SearchPresenter = ({movies, shows, onSubmit, keyword, onChange, loading, m
                     onChange={onChange}
                 />
             </Form>
+            <>
+                {movies && movies.length > 0 && (
+                    <Section title={"Movie Results"}>
+                        {movies.map(item => (
+                            <Poster
+                                ket={item.id}
+                                id={item.id}
+                                title={item.title}
+                                rating={item.vote_average}
+                                year={item.release_date}
+                                poster={item.poster_path}
+                            />
+                        ))}
+                    </Section>
+                )}
+                {shows && shows.length > 0 && (
+                    <Section title={"Shows Results"}>
+                        {shows.map(item => (
+                            <Poster
+                                key={item.id}
+                                id={item.id}
+                                title={item.name}
+                                rating={item.name}
+                                year={item.first_air_date}
+                                poster={item.poster_path}
+                            />
+                        ))}
+                    </Section>
+                )}
+            </>
         </Container>
     );
 };
