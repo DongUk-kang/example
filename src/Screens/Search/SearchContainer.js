@@ -35,6 +35,7 @@ const SearchContainer = () => {
             showsError,
             loading: false
         })
+        console.log(shows)
     }
 
     return (

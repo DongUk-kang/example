@@ -6,14 +6,23 @@ const Container = styled.div`
   font-size: 13px;
   
 `
-const Img = styled.div`
- background-image: url(${(props) => props.bgurl}); 
- height: 180px;
- background-size: cover;
- border-radius: 5px;
- background-position: center;
- transition: opacity 0.1s linear; 
-`
+// const Image = styled.div`
+//  background-image: url(${(props) => props.bgurl});
+//  height: 180px;
+//  background-size: cover;
+//  border-radius: 5px;
+//  background-position: center;
+//  transition: opacity 0.1s linear;
+// `
+
+const Image = styled.div`
+  background-image: url(${(props) => props.bgurl});
+  height: 180px;
+  background-size: cover;
+  border-radius: 4px;
+  background-position: center center;
+  transition: opacity 0.1s linear;
+`;
 
 const Rating = styled.span`
   bottom: 10px;
@@ -27,7 +36,7 @@ const ImageContainer = styled.div`
   margin-bottom: 7px;
   position: relative;
   &:hover {
-    ${Img} {
+    ${Image} {
       opacity: 0.3;
     }
     ${Rating} {
@@ -52,8 +61,9 @@ const Poster = ({id, title, rating, year, poster}) => {
     return (
         <Container>
             <ImageContainer>
-                <Img
-                    bgurl={`https://image.tmdb.org/t/p/w500${poster}`}
+                <Image
+                    bgurl={poster !== null ? `https://image.tmdb.org/t/p/w500${poster}` : require("../assets/noimage.png")}
+                    // bgurl={`https://image.tmdb.org/t/p/w500${poster}`}
                 />
                 <Rating>⭐ {rating} / 10</Rating>
             </ImageContainer>
