@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from "styled-components";
+import {Link} from "react-router-dom"
 
 const Container = styled.div`
   font-size: 13px;
@@ -59,17 +60,19 @@ const Year = styled.span`
 
 const Poster = ({id, title, rating, year, poster, isMovie=true}) => {
     return (
-        <Container>
-            <ImageContainer>
-                <Image
-                    bgurl={poster !== null ? `https://image.tmdb.org/t/p/w500${poster}` : require("../assets/noimage.png")}
-                    // bgurl={`https://image.tmdb.org/t/p/w500${poster}`}
-                />
-                <Rating>⭐ {rating} / 10</Rating>
-            </ImageContainer>
-            <Title>{title.length > 15 ? `${title.substring(0, 15)}...` : title}</Title>
-            <Year>{year}</Year>
-        </Container>
+        <Link to={isMovie ? `/movie/${id}` : `/tv/${id}`}>
+            <Container>
+                <ImageContainer>
+                    <Image
+                        bgurl={poster !== null ? `https://image.tmdb.org/t/p/w500${poster}` : require("../assets/noimage.png")}
+                        // bgurl={`https://image.tmdb.org/t/p/w500${poster}`}
+                    />
+                    <Rating>⭐ {rating} / 10</Rating>
+                </ImageContainer>
+                <Title>{title.length > 15 ? `${title.substring(0, 15)}...` : title}</Title>
+                <Year>{year}</Year>
+            </Container>
+        </Link>
     );
 };
 

@@ -28,7 +28,7 @@ export const movieAPI = {
     toprated: () => getAnything("/movie/top_rated"),
     popular: () => getAnything("/movie/popular"),
     upcoming: () => getAnything("/movie/upcoming"),
-    detail: (id) => getAnything(`movie/${id}`),
+    detail: (id) => getAnything(`/movie/${id}`),
     search: query => getAnything("/search/movie", { query })
 }
 
