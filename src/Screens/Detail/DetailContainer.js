@@ -38,9 +38,11 @@ const DetailContainer = ({ pathname }) => {
     }, [id])
 
     return (
-        <div>
-            <h1>{detail.result.title}</h1>
-        </div>
+        <DetailPresenter
+            loading={detail.loading}
+            result={detail.result}
+            error={detail.resultError}
+        />
     );
 };
 
