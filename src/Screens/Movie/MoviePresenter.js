@@ -4,7 +4,7 @@ import Section from "../../Compnents/Section";
 import Poster from "../../Compnents/Poster";
 import Loading from "../../Compnents/Loading";
 import styled from "styled-components";
-
+import Helmet from "react-helmet"
 
 const Container = styled.div`
     padding: 0px 10px;
@@ -12,69 +12,75 @@ const Container = styled.div`
 
 const MoviePresenter = ({nowPlaying, topRated, popular, upcoming, loading}) => {
     return (
-        loading ? (
-            <Loading />
-        ) : (
-            <Container>
-                {nowPlaying && nowPlaying.length > 0 && (
-                    <Section title={"Now Playing"}>
-                        {nowPlaying.map(item => (
-                            <Poster
-                                key={item.id}
-                                id={item.id}
-                                title={item.title}
-                                rating={item.vote_average}
-                                year={item.release_date}
-                                poster={item.poster_path}
-                            />
-                        ))}
-                    </Section>
-                )}
-                {topRated && topRated.length > 0 && (
-                    <Section title={"Top Rate"}>
-                        {topRated.map(item => (
-                            <Poster
-                                key={item.id}
-                                id={item.id}
-                                title={item.title}
-                                rating={item.vote_average}
-                                year={item.release_date}
-                                poster={item.poster_path}
-                            />
-                        ))}
-                    </Section>
-                )}
-                {popular && popular.length > 0 && (
-                    <Section title={"Popular"}>
-                        {popular.map(item => (
-                            <Poster
-                                key={item.id}
-                                id={item.id}
-                                title={item.title}
-                                rating={item.vote_average}
-                                year={item.release_date}
-                                poster={item.poster_path}
-                            />
-                        ))}
-                    </Section>
-                )}
-                {upcoming && upcoming.length > 0 && (
-                    <Section title={"Upcoming"}>
-                        {upcoming.map(item => (
-                            <Poster
-                                key={item.id}
-                                id={item.id}
-                                title={item.title}
-                                rating={item.vote_average}
-                                year={item.release_date}
-                                poster={item.poster_path}
-                            />
-                        ))}
-                    </Section>
-                )}
+        <>
+            <Helmet>
+                <title>Movies | Cording </title>
+            </Helmet>
+            { loading ? (
+                <Loading />
+            ) : (
+                <Container>
+                    {nowPlaying && nowPlaying.length > 0 && (
+                        <Section title={"Now Playing"}>
+                            {nowPlaying.map(item => (
+                                <Poster
+                                    key={item.id}
+                                    id={item.id}
+                                    title={item.title}
+                                    rating={item.vote_average}
+                                    year={item.release_date}
+                                    poster={item.poster_path}
+                                />
+                            ))}
+                        </Section>
+                    )}
+                    {topRated && topRated.length > 0 && (
+                        <Section title={"Top Rate"}>
+                            {topRated.map(item => (
+                                <Poster
+                                    key={item.id}
+                                    id={item.id}
+                                    title={item.title}
+                                    rating={item.vote_average}
+                                    year={item.release_date}
+                                    poster={item.poster_path}
+                                />
+                            ))}
+                        </Section>
+                    )}
+                    {popular && popular.length > 0 && (
+                        <Section title={"Popular"}>
+                            {popular.map(item => (
+                                <Poster
+                                    key={item.id}
+                                    id={item.id}
+                                    title={item.title}
+                                    rating={item.vote_average}
+                                    year={item.release_date}
+                                    poster={item.poster_path}
+                                />
+                            ))}
+                        </Section>
+                    )}
+                    {upcoming && upcoming.length > 0 && (
+                        <Section title={"Upcoming"}>
+                            {upcoming.map(item => (
+                                <Poster
+                                    key={item.id}
+                                    id={item.id}
+                                    title={item.title}
+                                    rating={item.vote_average}
+                                    year={item.release_date}
+                                    poster={item.poster_path}
+                                />
+                            ))}
+                        </Section>
+                    )}
 
-            </Container>
-        )
+                </Container>
+            )}
+        </>
+
 
     );
 };

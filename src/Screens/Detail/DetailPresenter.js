@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from "styled-components";
 import Loading from "../../Compnents/Loading";
+import Helmet from "react-helmet"
 
 const Container = styled.div`
   height: calc(100vh - 50px);
@@ -77,48 +78,61 @@ const Language = styled.span`
 const DetailPresenter = ({result, loading, error}) => {
     return (
         loading ? (
-            <Loading />
+            <>
+                <Helmet>
+                    <title>Loading | Coding</title>
+                </Helmet>
+                <Loading />
+
+            </>
+
         ) : (
-            <Container>
-                <Backdrop
-                    bgImage={
-                        result.backdrop_path ? `https://image.tmdb.org/t/p/w500${result.backdrop_path}` : require("../../assets/noimage.png")
-                    }
-                />
-                <Content>
-                    <Cover
+            <>
+                <Helmet>
+                    <title>{result.title ? result.title : result.name}</title>
+                </Helmet>
+                <Container>
+                    <Backdrop
                         bgImage={
-                            result.poster_path ? `https://image.tmdb.org/t/p/w500${result.poster_path}` : require("../../assets/noimage.png")
+                            result.backdrop_path ? `https://image.tmdb.org/t/p/w500${result.backdrop_path}` : require("../../assets/noimage.png")
                         }
                     />
-                    <Data>
-                        <Title>
-                            {result.title ? result.title : result.name}
-                        </Title>
-                        <Popularity>
-                            Popularity: {result.popularity}
-                        </Popularity>
-                        <OverView>
-                            OverView: {result.overview}
-                        </OverView>
-                        <Gen>
-                            Genres : {result.genres && result.genres.map((genre, index) => (
-                            index === result.genres.length - 1
-                                ? genre.name
-                                : `${genre.name} / `
-                        ))}
-                        </Gen>
-                        <Language>
-                            Languages : {result.spoken_languages && result.spoken_languages.map((lanuguage, index) =>(
-                            index === result.spoken_languages.length - 1
-                                ? lanuguage.name
-                                : `${lanuguage.name} / `
-                        ))}
-                        </Language>
-                    </Data>
-                </Content>
+                    <Content>
+                        <Cover
+                            bgImage={
+                                result.poster_path ? `https://image.tmdb.org/t/p/w500${result.poster_path}` : require("../../assets/noimage.png")
+                            }
+                        />
+                        <Data>
+                            <Title>
+                                {result.title ? result.title : result.name}
+                            </Title>
+                            <Popularity>
+                                Popularity: {result.popularity}
+                            </Popularity>
+                            <OverView>
+                                OverView: {result.overview}
+                            </OverView>
+                            <Gen>
+                                Genres : {result.genres && result.genres.map((genre, index) => (
+                                index === result.genres.length - 1
+                                    ? genre.name
+                                    : `${genre.name} / `
+                            ))}
+                            </Gen>
+                            <Language>
+                                Languages : {result.spoken_languages && result.spoken_languages.map((lanuguage, index) =>(
+                                index === result.spoken_languages.length - 1
+                                    ? lanuguage.name
+                                    : `${lanuguage.name} / `
+                            ))}
+                            </Language>
+                        </Data>
+                    </Content>
 
-            </Container>
+                </Container>
+            </>
+
         )
 
     );

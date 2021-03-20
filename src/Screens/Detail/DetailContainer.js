@@ -35,7 +35,7 @@ const DetailContainer = ({ pathname }) => {
 
     useEffect(() => {
         getDetail()
-    }, [id])
+    }, [])
 
     return (
         <DetailPresenter

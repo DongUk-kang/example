@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import Poster from "../../Compnents/Poster";
 import Section from "../../Compnents/Section";
 import Loading from "../../Compnents/Loading";
+import Helmet from "react-helmet";
 
 const Container = styled.div`
   padding-top: 0px 20px;
@@ -24,51 +25,57 @@ const Input = styled.input`
 
 const SearchPresenter = ({movies, shows, onSubmit, keyword, onChange, moviesError, showsError, loading}) => {
     return (
-       loading ? (
-           <Loading />
-       ) : (
-           <Container>
-               <Form onSubmit={onSubmit}>
+        <>
+            <Helmet>
+                <title>Search | Cording</title>
+            </Helmet>
+            {loading ? (
+                <Loading />
+            ) : (
+                <Container>
+                    <Form onSubmit={onSubmit}>
 
-                   <Input
-                       placeholder={"Search Movie and Tv Show"}
-                       value={keyword}
-                       onChange={onChange}
-                   />
-               </Form>
-               <>
-                   {movies && movies.length > 0 && (
-                       <Section title={"Movie Results"}>
-                           {movies.map(item => (
-                               <Poster
-                                   ket={item.id}
-                                   id={item.id}
-                                   title={item.title}
-                                   rating={item.vote_average}
-                                   year={item.release_date}
-                                   poster={item.poster_path}
-                               />
-                           ))}
-                       </Section>
-                   )}
-                   {shows && shows.length > 0 && (
-                       <Section title={"Shows Results"}>
-                           {shows.map(item => (
-                               <Poster
-                                   key={item.id}
-                                   id={item.id}
-                                   title={item.name}
-                                   rating={item.vote_average}
-                                   year={item.first_air_date}
-                                   poster={item.poster_path}
-                                   isMovie={false}
-                               />
-                           ))}
-                       </Section>
-                   )}
-               </>
-           </Container>
-       )
+                        <Input
+                            placeholder={"Search Movie and Tv Show"}
+                            value={keyword}
+                            onChange={onChange}
+                        />
+                    </Form>
+                    <>
+                        {movies && movies.length > 0 && (
+                            <Section title={"Movie Results"}>
+                                {movies.map(item => (
+                                    <Poster
+                                        ket={item.id}
+                                        id={item.id}
+                                        title={item.title}
+                                        rating={item.vote_average}
+                                        year={item.release_date}
+                                        poster={item.poster_path}
+                                    />
+                                ))}
+                            </Section>
+                        )}
+                        {shows && shows.length > 0 && (
+                            <Section title={"Shows Results"}>
+                                {shows.map(item => (
+                                    <Poster
+                                        key={item.id}
+                                        id={item.id}
+                                        title={item.name}
+                                        rating={item.vote_average}
+                                        year={item.first_air_date}
+                                        poster={item.poster_path}
+                                        isMovie={false}
+                                    />
+                                ))}
+                            </Section>
+                        )}
+                    </>
+                </Container>
+            )}
+        </>
+
     );
 };
 
