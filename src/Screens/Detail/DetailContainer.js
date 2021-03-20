@@ -15,6 +15,7 @@ const DetailContainer = ({ pathname }) => {
     const [detail, setDetail] = useState({
         loading: true,
         result: {},
+        similar: [],
         resultError: null
     })
 
@@ -23,12 +24,17 @@ const DetailContainer = ({ pathname }) => {
         ? await movieAPI.detail(id)
         : await tvAPI.detail(id)
 
+        const [similar, similarError] = location.pathname.includes("/movie/")
+        ? await movieAPI.similar(id)
+        : await tvAPI.similar(id)
+
         setDetail({
             loading: false,
             result: result,
+            similar: similar,
             resultError: resultError
         })
-        console.log(result)
+        console.log(similar)
 
 
     }
@@ -41,6 +47,7 @@ const DetailContainer = ({ pathname }) => {
         <DetailPresenter
             loading={detail.loading}
             result={detail.result}
+            similar={detail.similar}
             error={detail.resultError}
         />
     );

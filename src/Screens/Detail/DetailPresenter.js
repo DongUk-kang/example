@@ -75,7 +75,7 @@ const Language = styled.span`
 `
 
 
-const DetailPresenter = ({result, loading, error}) => {
+const DetailPresenter = ({result, loading, similar, error}) => {
     return (
         loading ? (
             <>
@@ -127,6 +127,7 @@ const DetailPresenter = ({result, loading, error}) => {
                                     : `${lanuguage.name} / `
                             ))}
                             </Language>
+                            <h1>{similar.length}</h1>
                         </Data>
                     </Content>
 
@@ -140,7 +141,9 @@ const DetailPresenter = ({result, loading, error}) => {
 
 DetailPresenter.propTypes = {
     result: PropTypes.object,
+    similar: PropTypes.array,
     loading: PropTypes.bool.isRequired,
+
     error: PropTypes.string
 };
 
