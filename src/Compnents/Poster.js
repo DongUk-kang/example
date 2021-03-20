@@ -57,7 +57,7 @@ const Year = styled.span`
   color: rgba(255, 255, 255, 0.5);
 `
 
-const Poster = ({id, title, rating, year, poster}) => {
+const Poster = ({id, title, rating, year, poster, isMovie=true}) => {
     return (
         <Container>
             <ImageContainer>
@@ -78,7 +78,8 @@ Poster.propTypes = {
     title: PropTypes.string.isRequired,
     rating: PropTypes.number,
     year: PropTypes.string,
-    poster: PropTypes.string
+    poster: PropTypes.string,
+    isMovie: PropTypes.bool
 
 };
 
