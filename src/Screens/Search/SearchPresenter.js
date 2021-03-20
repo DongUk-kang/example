@@ -72,7 +72,6 @@ const SearchPresenter = ({movies, shows, onSubmit, keyword, onChange, moviesErro
 };
 
 SearchPresenter.propTypes = {
-    loading: PropTypes.bool.isRequired,
     movies: PropTypes.array,
     shows: PropTypes.array,
     keyword: PropTypes.string.isRequired,
