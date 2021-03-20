@@ -14,7 +14,7 @@ const DetailContainer = ({ pathname }) => {
 
     const [detail, setDetail] = useState({
         loading: true,
-        result: null,
+        result: {},
         resultError: null
     })
 
