@@ -30,6 +30,7 @@ export const movieAPI = {
     upcoming: () => getAnything("/movie/upcoming"),
     detail: (id) => getAnything(`/movie/${id}`),
     similar: (id) => getAnything(`/movie/${id}/similar`),
+    video: (id) => getAnything(`/movie/${id}/videos`),
     search: query => getAnything("/search/movie", { query })
 }
 
@@ -40,5 +41,6 @@ export const tvAPI = {
     toprated: () => getAnything("/tv/top_rated"),
     detail: (id) => getAnything(`/tv/${id}`),
     similar: (id) => getAnything(`/tv/${id}/similar`),
+    videos: (id) => getAnything(`/tv/${id}/videos`),
     search: query => getAnything("/search/tv", { query })
 }

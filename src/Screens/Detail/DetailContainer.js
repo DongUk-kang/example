@@ -16,8 +16,10 @@ const DetailContainer = ({ pathname }) => {
         loading: true,
         result: {},
         similar: [],
+        videos: [],
         resultError: null
     })
+
 
     const getDetail = async () => {
         const [result, resultError] = location.pathname.includes("/movie/")
@@ -28,13 +30,26 @@ const DetailContainer = ({ pathname }) => {
         ? await movieAPI.similar(id)
         : await tvAPI.similar(id)
 
+        const [videos, videosError] = location.pathname.includes("/movie/")
+        ? await movieAPI.video(id)
+        : await tvAPI.video(id)
+
+
+        // const [video, videoError] = location.pathname.includes("/movie/")
+        // ? await movieAPI.video(id)
+        // : await tvAPI.video(id)
+
         setDetail({
             loading: false,
             result: result,
             similar: similar,
-            resultError: resultError
+            videos: videos,
+            resultError: resultError,
+            similarError: similarError,
+            videosError: videosError
         })
-        console.log(similar)
+
+        console.log(detail.videos)
 
 
     }
@@ -48,6 +63,7 @@ const DetailContainer = ({ pathname }) => {
             loading={detail.loading}
             result={detail.result}
             similar={detail.similar}
+            videos={detail.videos}
             error={detail.resultError}
         />
     );

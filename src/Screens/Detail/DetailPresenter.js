@@ -1,8 +1,12 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import styled from "styled-components";
 import Loading from "../../Compnents/Loading";
 import Helmet from "react-helmet"
+import Poster from "../../Compnents/Poster";
+import Section from "../../Compnents/Section";
+import {Link} from "react-router-dom";
+// import ModalVideo from "react-modal-video/src";
 
 const Container = styled.div`
   height: calc(100vh - 50px);
@@ -55,7 +59,7 @@ const Title = styled.h3`
 `
 
 const OverView = styled.span`
-  font-size: 14px;
+  font-size: 18px;
   padding-bottom: 20px;
 `
 const Popularity = styled.h4`
@@ -72,10 +76,20 @@ const Gen = styled.div`
 const Language = styled.span`
   padding-top: 20px;
   font-size: 14px;
+  margin-bottom: 20px;
+`
+
+const Similar = styled.h4`
+  padding-top: 20px;
+  margin-bottom: 20px;
+  font-size: 14px;
 `
 
 
-const DetailPresenter = ({result, loading, similar, error}) => {
+
+const DetailPresenter = ({result, loading, similar, videos, error}) => {
+
+    // const [isOpen, setOpen] = useState(false)
     return (
         loading ? (
             <>
@@ -111,8 +125,26 @@ const DetailPresenter = ({result, loading, similar, error}) => {
                                 Popularity: {result.popularity}
                             </Popularity>
                             <OverView>
-                                OverView: {result.overview}
+                                {result.overview.substring(0, 250)}...
                             </OverView>
+                            <div>
+                                {videos && videos.length > 0 && (
+                                    <Section title={"관련영상"}>
+                                        {videos.map(item => (
+                                            // <ModalVideo
+                                            //     channel='youtube'
+                                            //     autoplay
+                                            // />
+                                            <a
+                                                href={`https://www.youtube.com/watch?v=${item.key}`}
+                                            >
+
+                                            </a>
+
+                                        ))}
+                                    </Section>
+                                )}
+                            </div>
                             <Gen>
                                 Genres : {result.genres && result.genres.map((genre, index) => (
                                 index === result.genres.length - 1
@@ -127,7 +159,29 @@ const DetailPresenter = ({result, loading, similar, error}) => {
                                     : `${lanuguage.name} / `
                             ))}
                             </Language>
-                            <h1>{similar.length}</h1>
+                            {/*<Similar>*/}
+                            {/*    SimilarContents : {result.title || result.name.map((similar, index) => (*/}
+                            {/*    index === result.title.length - 1*/}
+                            {/*        ? similar.title*/}
+                            {/*        : `${similar.name} / `*/}
+                            {/*))}*/}
+                            {/*</Similar>*/}
+                            {similar && similar.length > 0 && (
+                                <Section title={"Similar Contets"}>
+                                    {similar.slice(0, 3).map(item => (
+
+                                        <Poster
+                                            title={item.title || item.name}
+                                            key={item.id}
+                                            id={item.id}
+                                            poster={item.poster_path}
+                                        />
+                                        ))}
+                                    </Section>
+                            )}
+
+
+
                         </Data>
                     </Content>
 
@@ -142,8 +196,8 @@ const DetailPresenter = ({result, loading, similar, error}) => {
 DetailPresenter.propTypes = {
     result: PropTypes.object,
     similar: PropTypes.array,
+    video: PropTypes.array,
     loading: PropTypes.bool.isRequired,
-
     error: PropTypes.string
 };
 
